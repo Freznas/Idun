@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_transparent">
+
+
+    <TextView
+        android:id="@+id/tv_ItemInList"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="top|center"
+        android:padding="25dp"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Placeholder title" />
+
+    <TextView
+        android:id="@+id/tv_itemAmount"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:gravity="start|center"
+        android:padding="25dp"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_ItemInList"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="10" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

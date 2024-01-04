@@ -13,7 +13,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ShoppingList"
+        android:text="@string/ShoppingActivityTitle"
         android:textColor="@color/black"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,22 +27,46 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rv_ShoppingList"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:hint="Item to add to cart"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList">
+
+    </EditText>
+
+    <EditText
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="80dp"
+        android:hint="#"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList" />
 
     <ImageButton
         android:id="@+id/btn_AddToList"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/background_transparent"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList"
         app:srcCompat="@drawable/addcart"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -51,10 +75,11 @@
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_marginStart="324dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/background_transparent"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList"
         app:srcCompat="@drawable/removecart"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -62,16 +87,14 @@
         android:id="@+id/btn_home"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
+        android:layout_marginEnd="88dp"
+
+
+        android:layout_marginBottom="80dp"
         android:background="@drawable/background_transparent"
         android:scaleType="centerCrop"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_RemoveFromList"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toEndOf="@+id/btn_AddToList"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/home"
         tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
