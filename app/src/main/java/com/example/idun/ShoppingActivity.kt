@@ -22,63 +22,45 @@ class ShoppingActivity : AppCompatActivity() {
         // Create the adapter and attach it to your RecyclerView
         val shoppingListRecyclerView: RecyclerView = findViewById(R.id.rv_ShoppingList)
         val layoutManager = LinearLayoutManager(this)
-        var itemInShoppingList=String
-        var numberOfItemsInList=Int
-        //
-        val adapter = ShoppingListAdapter(dataManager.getShoppingList().toList(), dataManager)
+        val itemInShoppingList: String = ""
+        val numberOfItemsInList: Int = 0
 
+        val adapter = ShoppingListAdapter(dataManager.getShoppingList().toList(), dataManager)
+        var editItemInShoppingList = getIntent().getIntExtra("itemPlacedInShoppingList", -1)
         shoppingListRecyclerView.layoutManager = layoutManager
         shoppingListRecyclerView.adapter = adapter
 
-
 // Saving a shopping list item
         dataManager.saveShoppingListItem("Milk")
-
 // Getting the shopping list
         val shoppingList = dataManager.getShoppingList()
-
-
         dataManager.saveItemAmount("Milk", 2)
-
-// Getting the amount of an item
         val amountOfMilk = dataManager.getItemAmount("Milk")
 
 
         binding.btnAddToList.setOnClickListener(View.OnClickListener {
             val title: String = itemInShoppingList.toString()
             val content: String = numberOfItemsInList.toString()
-            if (title.isEmpty()) {
-                Toast.makeText(this@ShoppingActivity, R.string."Nothing to save, fill in both fields", Toast.LENGTH_SHORT)
+            if (title.isEmpty() || content.isEmpty()) {
+                Toast.makeText(
+                    this@ShoppingActivity,
+                    R.string.itemPlacedInShoppingList,
+                    Toast.LENGTH_SHORT
+                )
                     .show()
-            } else {
-                if (editNotePosition != -1) {
-                    val isUpdated: Boolean =
-                        dataManager.updateNoteByPosition(editNotePosition, title, content)
-                    if (isUpdated) {
-                        val intent = Intent(this@NotesActivity, MainActivity::class.java)
-                        startActivity(intent)
-                    }
-                } else {
-                    val newPosition: Int = dataManager.getNotes().size()
-                    dataManager.saveNote(
-                        newPosition,
-                        title,
-                        content
-                    ) //Troligtvis här problemet ligger, tilldelar endast "Key" 0 om och om igen.
-                    val intent = Intent(this@NotesActivity, MainActivity::class.java)
-                    startActivity(intent)
-                }
+            }
+            else
+
+            binding.btnRemoveFromList.setOnClickListener {
+                val intent = Intent(this, ShoppingActivity::class.java)
+                Toast.makeText(this, "You removed Levain", Toast.LENGTH_SHORT).show()
+//            startActivity(intent)
+            }
+            binding.btnHome.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
         })
-        binding.btnRemoveFromList.setOnClickListener {
-            val intent = Intent(this, ShoppingActivity::class.java)
-            Toast.makeText(this, "You removed Levain", Toast.LENGTH_SHORT).show()
-//            startActivity(intent)
-        }
-        binding.btnHome.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-    }
 
+    }
 }

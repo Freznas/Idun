@@ -1,5 +1,6 @@
 package com.example.idun
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,11 @@ class ShoppingListAdapter(private val items: List<String>, private val dataManag
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_shopping, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.listview_shoppinglist, parent, false)
         return ViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
 
