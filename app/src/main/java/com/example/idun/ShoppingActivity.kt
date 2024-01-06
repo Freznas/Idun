@@ -2,7 +2,6 @@ package com.example.idun
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,10 +21,10 @@ class ShoppingActivity : AppCompatActivity() {
         // Create the adapter and attach it to your RecyclerView
         val shoppingListRecyclerView: RecyclerView = findViewById(R.id.rv_ShoppingList)
         val layoutManager = LinearLayoutManager(this)
-        val itemInShoppingList: String = ""
-        val numberOfItemsInList: Int = 0
+        val itemInShoppingList = String
+        val numberOfItemsInList = Int
 
-        val adapter = ShoppingListAdapter(dataManager.getShoppingList().toList(), dataManager)
+        val adapter = ShoppingListAdapter(dataManager)
         var editItemInShoppingList = getIntent().getIntExtra("itemPlacedInShoppingList", -1)
         shoppingListRecyclerView.layoutManager = layoutManager
         shoppingListRecyclerView.adapter = adapter
@@ -34,33 +33,42 @@ class ShoppingActivity : AppCompatActivity() {
         dataManager.saveShoppingListItem("Milk")
 // Getting the shopping list
         val shoppingList = dataManager.getShoppingList()
-        dataManager.saveItemAmount("Milk", 2)
-        val amountOfMilk = dataManager.getItemAmount("Milk")
+//        dataManager.saveItemAmount("Milk", 2)
+//        val amountOfMilk = dataManager.getItemAmount("Milk")
 
 
-        binding.btnAddToList.setOnClickListener(View.OnClickListener {
-            val title: String = itemInShoppingList.toString()
-            val content: String = numberOfItemsInList.toString()
-            if (title.isEmpty() || content.isEmpty()) {
+        binding.btnAddToList.setOnClickListener {
+            val title: String = binding.etItemToPlace.text.toString().trim()
+            val content: String = binding.etAmountToPlace.text.toString().trim()
+
+            if (title.isNotEmpty() && content.isNotEmpty()) {
+                val amount = content.toIntOrNull() ?:0
+
+                 adapter.addItem(title,amount)
+                binding.etItemToPlace.text.clear()
+                binding.etAmountToPlace.text.clear()
                 Toast.makeText(
                     this@ShoppingActivity,
-                    R.string.itemPlacedInShoppingList,
+                    "Item added to the list: $title, Amount: $amount",
                     Toast.LENGTH_SHORT
                 )
                     .show()
-            }
-            else
 
-            binding.btnRemoveFromList.setOnClickListener {
-                val intent = Intent(this, ShoppingActivity::class.java)
-                Toast.makeText(this, "You removed Levain", Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.btnRemoveFromList.setOnClickListener {
+            val intent = Intent(this, ShoppingActivity::class.java)
+            Toast.makeText(this, "You removed Levain", Toast.LENGTH_SHORT).show()
 //            startActivity(intent)
-            }
-            binding.btnHome.setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
-        })
+        }
 
+        binding.btnHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
+
+
+
+

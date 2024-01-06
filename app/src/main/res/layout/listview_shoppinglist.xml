@@ -12,27 +12,27 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="top|center"
+        android:maxLines="1"
         android:padding="25dp"
         android:text="@string/placeholder_text_for_listview"
         android:textColor="@color/black"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_itemAmount"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:gravity="start|center"
+        android:maxLines="1"
         android:padding="25dp"
         android:text="@string/placeholder_number_for_listview"
         android:textColor="@color/black"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_ItemInList"
-        app:layout_constraintTop_toTopOf="parent"
-     />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
