@@ -11,8 +11,8 @@ import com.example.idun.databinding.ActivityShoppingBinding
 
 class ShoppingActivity : AppCompatActivity() {
     lateinit var dataManager: DataManager
-    lateinit var button: Button
     lateinit var binding: ActivityShoppingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShoppingBinding.inflate(layoutInflater)
@@ -21,20 +21,15 @@ class ShoppingActivity : AppCompatActivity() {
         // Create the adapter and attach it to your RecyclerView
         val shoppingListRecyclerView: RecyclerView = findViewById(R.id.rv_ShoppingList)
         val layoutManager = LinearLayoutManager(this)
-        val itemInShoppingList = String
-        val numberOfItemsInList = Int
 
         val adapter = ShoppingListAdapter(dataManager)
-        var editItemInShoppingList = getIntent().getIntExtra("itemPlacedInShoppingList", -1)
         shoppingListRecyclerView.layoutManager = layoutManager
         shoppingListRecyclerView.adapter = adapter
-
+        val savedShoppingList = dataManager.getShoppingListWithAmounts()
+        adapter.setItems(savedShoppingList)
 // Saving a shopping list item
-        dataManager.saveShoppingListItem("Milk")
+
 // Getting the shopping list
-        val shoppingList = dataManager.getShoppingList()
-//        dataManager.saveItemAmount("Milk", 2)
-//        val amountOfMilk = dataManager.getItemAmount("Milk")
 
 
         binding.btnAddToList.setOnClickListener {
@@ -42,14 +37,15 @@ class ShoppingActivity : AppCompatActivity() {
             val content: String = binding.etAmountToPlace.text.toString().trim()
 
             if (title.isNotEmpty() && content.isNotEmpty()) {
-                val amount = content.toIntOrNull() ?:0
+                val amount = content.toIntOrNull() ?: 0
 
-                 adapter.addItem(title,amount)
+                adapter.addItem(title, amount)
                 binding.etItemToPlace.text.clear()
                 binding.etAmountToPlace.text.clear()
+                dataManager.saveShoppingListItem(title, content)
                 Toast.makeText(
                     this@ShoppingActivity,
-                    "Item added to the list: $title, Amount: $amount",
+                    "Item added to the list: $title,  $amount",
                     Toast.LENGTH_SHORT
                 )
                     .show()

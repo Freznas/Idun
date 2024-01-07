@@ -35,13 +35,18 @@ class ShoppingListAdapter(private val dataManager: DataManager) :
         val amount = amounts[item]
 
         holder.itemNameTextView.text = item
-        holder.itemAmountTextView.text = "Amount: $amount" // Show the amount
+        holder.itemAmountTextView.text = "$amount" // Show the amount
 
         holder.itemView.setOnClickListener {
             // Handle item click if needed
         }
     }
-
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItems(items: List<Pair<String, Int>>) {
+        this.items.clear()
+        this.items.addAll(items.map { "${it.first}.${it.second}" })
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount(): Int {
         return items.size
