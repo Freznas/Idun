@@ -55,7 +55,6 @@ class ShoppingActivity : AppCompatActivity() {
         binding.btnRemoveFromList.setOnClickListener {
             val intent = Intent(this, ShoppingActivity::class.java)
             Toast.makeText(this, "You removed Levain", Toast.LENGTH_SHORT).show()
-//            startActivity(intent)
         }
 
         binding.btnHome.setOnClickListener {
