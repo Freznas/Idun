@@ -20,10 +20,12 @@ class DataManager(context: Context) {
         shoppingList.add(itemName)
         shoppingList.add(itemAmount)
         editor.putStringSet(SHOPPING_LIST_KEY, shoppingList)
+        editor.putInt("$ITEM_AMOUNT_PREFIX$itemName", itemAmount.toInt())
+
         editor.apply()
     }
 
-    private fun getShoppingList(): Set<String> {
+    fun getShoppingList(): Set<String> {
         return sharedPreferences.getStringSet(SHOPPING_LIST_KEY, setOf()) ?: setOf()
     }
 
@@ -44,7 +46,20 @@ class DataManager(context: Context) {
         return sharedPreferences.getInt("$ITEM_AMOUNT_PREFIX$itemName", 0)
     }
 
-    // Other methods for removing items, clearing the list, etc.
+    fun deleteItemByitem(itemToDelete: String): Boolean {
+        val editor = sharedPreferences.edit()
+        val allEntries = sharedPreferences.all
+
+        for ((key, value) in allEntries) {
+            val entryValue = value.toString()
+            val noteParts = entryValue.split("\\|")
+            if (noteParts.isNotEmpty() && noteParts[0] == itemToDelete)
+                editor.remove(key)
+            return editor.commit()
+        }
+        return false
+    }
+
 }
 
 

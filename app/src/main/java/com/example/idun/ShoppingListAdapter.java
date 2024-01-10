@@ -12,14 +12,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class ShoppingListAdapter extends ArrayAdapter<String>
 
 {
     private DataManager dataManager;
+    private List<String> items;
+
 
 
     public ShoppingListAdapter(@NonNull Context context, int resource)
     {
+
         super(context, 0);
         this.dataManager = dataManager;
 
@@ -58,7 +63,11 @@ public class ShoppingListAdapter extends ArrayAdapter<String>
         }
         return ListItemView;
     }
-}
+
+    public void setItems(List<String> itemList) {
+        this.items = itemList;
+        notifyDataSetChanged(); // Notify the adapter that the dataset has changed
+    }
 
 public void deleteItemAtPosition (int position)
 {
@@ -70,13 +79,15 @@ public void deleteItemAtPosition (int position)
             String[] itemParts = itemToDelete.split ("\\|");
             if(itemParts.length >0)
             {
-                String itemToDelete = itemParts[0];
-                dataManager.deleteItemByItem(itemToDeleteToDelete);
-                remove(noteToDelete);
+
+                dataManager.deleteItemByitem(itemToDelete);
+                remove(itemToDelete);
 
 
         }
+
     }
+
 }
 }
 }
