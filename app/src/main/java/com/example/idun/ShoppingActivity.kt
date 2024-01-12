@@ -6,8 +6,6 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.idun.databinding.ActivityShoppingBinding
 
 class ShoppingActivity : AppCompatActivity() {
@@ -32,44 +30,51 @@ class ShoppingActivity : AppCompatActivity() {
 
         dataManager = DataManager(this)
         val saveShoppingList = dataManager.getShoppingListWithAmounts().map {
-            "${it.first}|${it.second}"}
-            adapter.setItems(saveShoppingList)
-            adapter.context
+            "${it.first}|${it.second}"
+        }
+        adapter.setItems(saveShoppingList)
+        adapter.context
 
 // Getting the shopping list
 
 
-            binding.btnAddToList.setOnClickListener {
-                val title: String = binding.etItemToPlace.text.toString().trim()
-                val content: String = binding.etAmountToPlace.text.toString().trim()
+        binding.btnAddToList.setOnClickListener {
+            val title: String = binding.etItemToPlace.text.toString().trim()
+            val itemAmount: String = binding.etAmountToPlace.text.toString()
 
-                if (title.isNotEmpty() && content.isNotEmpty()) {
-                    val amount = content.toIntOrNull() ?: 0
-
-
-                    binding.etItemToPlace.text.clear()
-                    binding.etAmountToPlace.text.clear()
-                    dataManager.saveShoppingListItem(title, content)
-                    Toast.makeText(
-                        this@ShoppingActivity,
-                        "Item added to the list: $title,  $amount",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
-
-                }
-            }
-            binding.btnRemoveFromList.setOnClickListener {
+            if (title.isEmpty() && itemAmount.isEmpty()) {
                 val intent = Intent(this, ShoppingActivity::class.java)
-                Toast.makeText(this, "You removed Levain", Toast.LENGTH_SHORT).show()
-            }
 
-            binding.btnHome.setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                Toast.makeText(this, "Enter Item and amount", Toast.LENGTH_SHORT).show()
+
+            } else {
+                val amount = itemAmount.toIntOrNull() ?: 0
+
+
+                binding.etItemToPlace.text.clear()
+                binding.etAmountToPlace.text.clear()
+                dataManager.saveShoppingListItem(title, itemAmount)
+                Toast.makeText(
+                    this@ShoppingActivity,
+                    "Item added to the list: $title,  $amount",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
             }
         }
+
+
+        binding.btnRemoveFromList.setOnClickListener {
+            val intent = Intent(this, ShoppingActivity::class.java)
+            Toast.makeText(this, "You removed Levain", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
+}
 
 
 
