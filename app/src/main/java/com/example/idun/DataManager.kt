@@ -19,6 +19,7 @@ class DataManager(context: Context) {
         val shoppingList = getShoppingList().toMutableSet()
         shoppingList.add("$itemName|$itemAmount")
         editor.putStringSet(SHOPPING_LIST_KEY, shoppingList)
+
         editor.apply()
     }
 
@@ -32,13 +33,8 @@ class DataManager(context: Context) {
             val amount = getItemAmount(item)
             item to amount
         }
-    }
 
-    fun saveItemAmount(itemName: String, amount: Int) {
-        editor.putInt("$ITEM_AMOUNT_PREFIX$itemName", amount)
-        editor.apply()
     }
-
     private fun getItemAmount(itemName: String): Int {
         return sharedPreferences.getInt("$ITEM_AMOUNT_PREFIX$itemName", 0)
     }
