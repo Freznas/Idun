@@ -1,6 +1,5 @@
 package com.example.idun
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ListView
 import android.widget.Toast
@@ -10,9 +9,10 @@ import com.example.idun.databinding.ActivityShoppingBinding
 // Problem: Come up with a solution to refresh the ListView without having to exit the activity and reenter it.
 
 class ShoppingActivity : AppCompatActivity() {
-    private lateinit var dataManager: DataManager
+    private lateinit var combinedListDataManager: CombinedListDataManager
     private lateinit var binding: ActivityShoppingBinding
     private lateinit var listView: ListView
+    private lateinit var adapter: CombinedListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,23 +20,27 @@ class ShoppingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        listView = findViewById(R.id.rv_ShoppingList)
+        listView = findViewById(R.id.lv_ShoppingList)
 
-        dataManager = DataManager(this)
-        val adapter = ShoppingListAdapter(this, 0)
+        combinedListDataManager = CombinedListDataManager(this)
+        adapter = CombinedListAdapter(
+            this,
+            0,
+            combinedListDataManager
+        )
 
         listView.adapter = adapter
 
-        val shoppingList = dataManager.getShoppingList()
+        val shoppingList = combinedListDataManager.getShoppingList()
         adapter.addAll(shoppingList)
 
 
 //        dataManager = DataManager(this)
-        val saveShoppingList = dataManager.getShoppingListWithAmounts().map {
+        val saveShoppingList = combinedListDataManager.getShoppingListWithAmounts().map {
             "${it.first}|${it.second}"
         }
         adapter.setItems(saveShoppingList)
-        adapter.context
+//        adapter.context
 
         // User defined method to shuffle the array list items
         binding.btnAddToList.setOnClickListener {
@@ -44,7 +48,6 @@ class ShoppingActivity : AppCompatActivity() {
             val itemAmount: String = binding.etAmountToPlace.text.toString()
 
             if (title.isEmpty() || itemAmount.isEmpty()) {
-
                 Toast.makeText(this, "Enter Item and amount", Toast.LENGTH_SHORT).show()
 
             } else {
@@ -53,22 +56,22 @@ class ShoppingActivity : AppCompatActivity() {
 
                 binding.etItemToPlace.text.clear()
                 binding.etAmountToPlace.text.clear()
-                dataManager.saveShoppingListItem(title, itemAmount)
+                combinedListDataManager.saveShoppingListItem(title, itemAmount)
 
 
                 runOnUiThread {
-                    val newData = dataManager.getShoppingListWithAmounts().toMutableList()
+                    val newData = combinedListDataManager.getShoppingListWithAmounts().toMutableList()
 
                     newData.shuffle()
                     adapter.notifyDataSetChanged()
 
                 }
-                adapter.setItems(dataManager.getShoppingList().toMutableList())
+                adapter.setItems(combinedListDataManager.getShoppingList().toMutableList())
 
-                dataManager.saveShoppingListItem(title, itemAmount)
+                combinedListDataManager.saveShoppingListItem(title, itemAmount)
                 Toast.makeText(
                     this@ShoppingActivity,
-                    "Item added to the list: $title,  $amount",
+                    " $amount x , $title has been added to the list ",
                     Toast.LENGTH_SHORT
 
                 )
@@ -79,20 +82,43 @@ class ShoppingActivity : AppCompatActivity() {
 
 
         binding.btnRemoveFromList.setOnClickListener {
-            Intent(this, ShoppingActivity::class.java)
-            Toast.makeText(this, "You removed Levain", Toast.LENGTH_SHORT).show()
+
+                    Toast.makeText(this, "Removing item does not work yet", Toast.LENGTH_LONG).show()
+
         }
 
-        binding.btnHome.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem: String = adapter.getItem(position) ?: ""
+
+            // Split the selectedItem to get title and amount
+            val itemParts = selectedItem.split("\\|".toRegex()).toTypedArray()
+
+            // Check if there are at least two parts (title and amount)
+            if (itemParts.size >= 2) {
+                val title = itemParts[0]
+                val amount = itemParts[1]
+                // Set the values in your EditText fields
+//                binding.etItemToPlace.setText(title) use to place clicked item in edittext
+//                binding.etAmountToPlace.setText(amount) use to place clicked item amount in edittext
+                adapter.notifyDataSetChanged()
+                removeSelectedItem(title,amount)
+            }
         }
+
+
     }
 
+    private fun removeSelectedItem(title: String,amount:String) {
+        val selectedItem = "$title|$amount"
+        adapter.deleteItemByTitle(title)
+        val shoppingList = combinedListDataManager.getShoppingList().toMutableSet()
+        shoppingList.removeIf { it.startsWith(title) }
+        shoppingList.remove(selectedItem)
+        combinedListDataManager.saveShoppingList(shoppingList)
+        adapter.notifyDataSetChanged()
+
     }
-
-
-
+}
 
 
 

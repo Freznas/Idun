@@ -7,25 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingListAdapter extends ArrayAdapter<String>
+public class CombinedListAdapter extends ArrayAdapter<String>
 
 {
-   List<String> items;
+    List<String> items;
+    CombinedListDataManager shoppingListDatamanager;
 
-
-    public ShoppingListAdapter(@NonNull Context context, int resource)
+    public CombinedListAdapter(@NonNull Context context, int resource, CombinedListDataManager shoppingListDatamanager)
     {
 
         super(context, 0);
+        this.shoppingListDatamanager = shoppingListDatamanager;
 
         this.items = new ArrayList<>();
-
     }
 
     @NonNull
@@ -68,37 +69,40 @@ public class ShoppingListAdapter extends ArrayAdapter<String>
         this.items = itemList;
         notifyDataSetChanged(); // Notify the adapter that the dataset has changed
     }
-}
-//↓ To Delete item ↓
-//    final String itemToDelete = itemParts[0];
-//            ListItemView.setOnClickListener(new View.OnClickListener()
-//    {
-//        @Override
-//        public void onClick(View v)
-//        {
-//            Intent editIntent = new Intent(getContext(), ShoppingActivity.class);
-//            editIntent.putExtra("edit_item_position", position);
-//            getContext().startActivity(editIntent);
-//        }
-//    });
-//public void deleteItemAtPosition (int position)
-//{
-//    if (position> 0 && position< getCount())
-//    {
-//        String itemToDelete = getItem(position);
-//        if(itemToDelete!=null)
-//        {
-//            String[] itemParts = itemToDelete.split ("\\|");
-//            if(itemParts.length >0)
-//            {
-//
-//                dataManager.deleteItemByitem(itemToDelete);
-//                remove(itemToDelete);
-//
-//
-//        }
-//
+
+//  void removeSelectedItem(String title, String amount) {
+//        String selectedItem = title + "|" + amount;
+//        deleteItemByTitle(title);
+//        Set<String> shoppingList = new HashSet<>(dataManager.getShoppingList());
+//        shoppingList.removeIf(item -> item.startsWith(title));
+//        shoppingList.remove(selectedItem);
+//        dataManager.saveShoppingList(shoppingList);
+//        notifyDataSetChanged();
 //    }
+
+    void deleteItemByTitle(String titleToDelete)
+    {
+        for (int i = 0; i < getCount(); i++)
+        {
+            String currentItem = getItem(i);
+            if (currentItem != null)
+            {
+                String[] itemParts = currentItem.split("\\|");
+                if (itemParts.length > 0 && itemParts[0].equals(titleToDelete))
+                {
+                    shoppingListDatamanager.deleteItemByTitle(titleToDelete);
+                    remove(currentItem);
+                    notifyDataSetChanged();
+                    return;
+                }
+            }
+
+        }
+
+    }
+}
+
+
 
 
 

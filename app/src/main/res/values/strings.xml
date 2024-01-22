@@ -8,4 +8,5 @@
     <string name="idun_s_apples_title_text">Idun\'s Apples</string>
     <string name="placeholder_text_for_listview">Placeholder title</string>
     <string name="placeholder_number_for_listview">0</string>
+    <string name="click_to_delete_item">Click an item to delete from shoppingList</string>
 </resources>
