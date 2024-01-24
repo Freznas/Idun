@@ -8,16 +8,7 @@
     android:background="@drawable/grunge_vowen"
     tools:context=".ShoppingActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/click_to_delete_item"
-        android:textSize="@dimen/delete_item_txt_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_ItemToPlace">
 
-    </TextView>
 
     <TextView
         android:id="@+id/tv_ShoppingListTitle"
@@ -54,7 +45,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList">
+        app:layout_constraintTop_toBottomOf="@+id/lv_ShoppingList">
 
     </EditText>
 
@@ -67,7 +58,7 @@
         android:hint="#"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList" />
+        app:layout_constraintTop_toBottomOf="@+id/lv_ShoppingList" />
 
     <ImageButton
         android:id="@+id/btn_AddToList"
@@ -78,7 +69,7 @@
         android:background="@drawable/background_transparent"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList"
+        app:layout_constraintTop_toBottomOf="@+id/lv_ShoppingList"
         app:srcCompat="@drawable/addcart"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -92,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList"
+        app:layout_constraintTop_toBottomOf="@+id/lv_ShoppingList"
         app:srcCompat="@drawable/removecart"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -105,7 +96,7 @@
         android:background="@drawable/background_transparent"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_ShoppingList"
+        app:layout_constraintTop_toBottomOf="@+id/lv_ShoppingList"
         app:srcCompat="@drawable/home"
         tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "92118358652",
+    "project_id": "idun-5986d",
+    "storage_bucket": "idun-5986d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92118358652:android:b24dde04e26ee70de487f9",
+        "android_client_info": {
+          "package_name": "com.example.idun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtweaeqJoAYKhogZ3UznWQ7X2jhE-WDyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

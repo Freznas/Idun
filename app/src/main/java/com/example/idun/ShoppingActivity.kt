@@ -60,7 +60,8 @@ class ShoppingActivity : AppCompatActivity() {
 
 
                 runOnUiThread {
-                    val newData = combinedListDataManager.getShoppingListWithAmounts().toMutableList()
+                    val newData =
+                        combinedListDataManager.getShoppingListWithAmounts().toMutableList()
 
                     newData.shuffle()
                     adapter.notifyDataSetChanged()
@@ -79,43 +80,33 @@ class ShoppingActivity : AppCompatActivity() {
 
             }
         }
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem: String = adapter.getItem(position)?: ""
+
+            val itemParts = selectedItem.split("\\|".toRegex()).toTypedArray()
+            val itemName = if (itemParts.isNotEmpty()) itemParts[0] else ""
+            adapter.remove(selectedItem)
+            adapter.notifyDataSetChanged()
+            Toast.makeText(
+                this,
+                "you have Removed $itemName, from the Shopping list",
+                Toast.LENGTH_LONG
+            ).show()
+        }
 
 
         binding.btnRemoveFromList.setOnClickListener {
+            adapter.clear()
+            adapter.notifyDataSetChanged()
+            binding.etItemToPlace.setText("")
+            binding.etAmountToPlace.setText("")
 
-                    Toast.makeText(this, "Removing item does not work yet", Toast.LENGTH_LONG).show()
+            Toast.makeText(this,
+                "Your Shopping list has been cleared.",
+                Toast.LENGTH_LONG).show()
 
         }
 
-        listView.setOnItemClickListener { parent, view, position, id ->
-            val selectedItem: String = adapter.getItem(position) ?: ""
-
-            // Split the selectedItem to get title and amount
-            val itemParts = selectedItem.split("\\|".toRegex()).toTypedArray()
-
-            // Check if there are at least two parts (title and amount)
-            if (itemParts.size >= 2) {
-                val title = itemParts[0]
-                val amount = itemParts[1]
-                // Set the values in your EditText fields
-//                binding.etItemToPlace.setText(title) use to place clicked item in edittext
-//                binding.etAmountToPlace.setText(amount) use to place clicked item amount in edittext
-                adapter.notifyDataSetChanged()
-                removeSelectedItem(title,amount)
-            }
-        }
-
-
-    }
-
-    private fun removeSelectedItem(title: String,amount:String) {
-        val selectedItem = "$title|$amount"
-        adapter.deleteItemByTitle(title)
-        val shoppingList = combinedListDataManager.getShoppingList().toMutableSet()
-        shoppingList.removeIf { it.startsWith(title) }
-        shoppingList.remove(selectedItem)
-        combinedListDataManager.saveShoppingList(shoppingList)
-        adapter.notifyDataSetChanged()
 
     }
 }
