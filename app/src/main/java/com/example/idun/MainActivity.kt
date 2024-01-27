@@ -16,21 +16,24 @@ import android.widget.Button
 import com.example.idun.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var button:Button
-   lateinit var binding:ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-binding.btnShopping.setOnClickListener {
-    val intent = Intent(this,ShoppingActivity::class.java)
-    startActivity(intent)
-}
-        binding.btnInventory.setOnClickListener {
-            val intent = Intent(this,InventoryActivity::class.java)
+        binding.btnShopping.setOnClickListener {
+            val intent = Intent(this, ShoppingActivity::class.java)
             startActivity(intent)
         }
+        binding.btnInventory.setOnClickListener {
+            val intent = Intent(this, InventoryActivity::class.java)
+            startActivity(intent)
+        }
+            binding.btnChat.setOnClickListener {
+                val intent = Intent(this, ChatActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
-}
