@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation ("com.google.firebase:firebase-auth:22.3.1")
     implementation ("com.google.firebase:firebase-database:VERSION")
+    implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
     implementation("com.google.firebase:firebase-analytics")
