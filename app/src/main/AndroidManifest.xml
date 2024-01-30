@@ -12,6 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Idun"
         tools:targetApi="31">
+
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+                See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/fui_ic_check_circle_black_128dp" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+
+
+
+
         <activity
             android:name=".ChatActivity"
             android:exported="false" />
@@ -22,14 +39,22 @@
             android:name=".ShoppingActivity"
             android:exported="false" />
         <activity
+
             android:name=".MainActivity"
             android:exported="true">
+
+
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
+
     </application>
 
 </manifest>

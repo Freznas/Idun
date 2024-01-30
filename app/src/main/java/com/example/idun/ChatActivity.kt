@@ -3,6 +3,7 @@ package com.example.idun
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,21 +22,7 @@ class ChatActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance() // Initialize FirebaseDatabase
     private lateinit var adapter: ChatAdapter
     private lateinit var dataManager: ChatDataManager
-
-
-    private val signInLauncher = registerForActivityResult(
-        FirebaseAuthUIActivityResultContract(),
-    ) { res ->
-        this.onSignInResult(res)
-    }
-    private val providers = arrayListOf(
-        AuthUI.IdpConfig.EmailBuilder().build(),
-        AuthUI.IdpConfig.PhoneBuilder().build(),
-        AuthUI.IdpConfig.GoogleBuilder().build(),
-        AuthUI.IdpConfig.FacebookBuilder().build(),
-        AuthUI.IdpConfig.TwitterBuilder().build(),
-
-        )
+    private lateinit var messageEditText: EditText
 
 
     @SuppressLint("ResourceType")
@@ -54,66 +41,87 @@ class ChatActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
+        messageEditText = findViewById(R.id.messageEditText) as EditText
 
         // Set up Firebase database reference
         databaseReference = firebaseDatabase.getReference("chat")
 
+
+        val auth = FirebaseAuth.getInstance()
+
+// Sign in anonymously
+        auth.signInAnonymously()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Sign-in success
+                    val user = auth.currentUser
+                    // Now you can access authenticated features or interact with Firebase services as needed
+                } else {
+                    // If sign-in fails, display a message to the user.
+                    // Log.w(TAG, "signInAnonymously:failure", task.exception)
+                    // Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                }
+
+
+            }
+
+        fun sendMessageToFirebase(message: ChatMessage) {
+            val databaseReference = FirebaseDatabase.getInstance().getReference("ChatRoom")
+            databaseReference.push().setValue(message)
+
+        }
+
+        binding.sendButton.setOnClickListener {
+            val messageText = messageEditText.text.toString()
+            if (messageText.isNotEmpty()) {
+                val currentUser = FirebaseAuth.getInstance().currentUser
+                val userId = currentUser?.uid ?: "anonymous"
+                val message = ChatMessage(userId, messageText, System.currentTimeMillis())
+                sendMessageToFirebase(message)
+                messageEditText.text = null
+            }
+        }
+
         // Attach a listener to read the data at our chat reference
         databaseReference.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+            override fun onChildAdded(
+                snapshot: DataSnapshot,
+                previousChildName: String?
+            ) {
                 // A new message is added, handle it
                 val message = snapshot.getValue(ChatMessage::class.java)
                 if (message != null) {
-                   adapter.addMessage(message)
+                    adapter.addMessage(message)
                     // Scroll to the last message
                     recyclerView.scrollToPosition(adapter.itemCount - 1)
                 }
             }
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
+            override fun onChildChanged(
+                snapshot: DataSnapshot,
+                previousChildName: String?
+            ) {
+                TODO("enter logic to alter sent messages")
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
+                TODO("enter logic to remove sent messages")
             }
 
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
+            override fun onChildMoved(
+                snapshot: DataSnapshot,
+                previousChildName: String?
+            ) {
+                TODO("enter logic to alter position(Pining or sorting options)")
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-        val signInIntent = AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .build()
-        signInLauncher.launch(signInIntent)
 
-        FirebaseAuth.getInstance().signInWithEmailAndPassword("joakim198904@live.se", "joakim1234")
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // User signed in successfully
-                } else {
-                    // If sign-in fails, display a message to the user.
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
-    private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
-        val response = result.idpResponse
-        if (result.resultCode == RESULT_OK) {
-            // Successfully signed in
-            val user = FirebaseAuth.getInstance().currentUser
-            // ...
-        } else {
-            Toast.makeText(this, "Sign-in failed",Toast.LENGTH_SHORT).show()
-            // Sign in failed. If response is null the user canceled the
-            // sign-in flow using the back button. Otherwise check
-            // response.getError().getErrorCode() and handle the error.
-            // ...
-        }
+
     }
 }
+
+
