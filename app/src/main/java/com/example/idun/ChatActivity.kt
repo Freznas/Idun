@@ -34,6 +34,7 @@ class ChatActivity : AppCompatActivity() {
         dataManager = FireBaseDataManager()
 
         adapter = ChatAdapter(this)
+        fetchMessagesFromBackEnd()
 
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
@@ -45,7 +46,6 @@ class ChatActivity : AppCompatActivity() {
 
         // Set up Firebase database reference
         databaseReference = firebaseDatabase.getReference("chat")
-
 
         val auth = FirebaseAuth.getInstance()
 
@@ -66,9 +66,42 @@ class ChatActivity : AppCompatActivity() {
             }
 
         fun sendMessageToFirebase(message: ChatMessage) {
-            val databaseReference = FirebaseDatabase.getInstance().getReference("ChatRoom")
+            val databaseReference = FirebaseDatabase.getInstance().getReference("chat")
             databaseReference.push().setValue(message)
+        }
 
+        // Function to fetch messages from Firebase
+        fun fetchMessagesFromFirebase() {
+            val databaseReference = FirebaseDatabase.getInstance().getReference("chat")
+            databaseReference.addChildEventListener(object : ChildEventListener {
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val message = snapshot.getValue(ChatMessage::class.java)
+                    if (message != null) {
+                        // Add the message to your RecyclerView adapter's dataset
+                        adapter.addMessage(message)
+                        // Scroll to the last message
+                        recyclerView.scrollToPosition(adapter.itemCount - 1)
+                    }
+                }
+
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+                // Implement other ChildEventListener methods as needed
+            })
         }
 
         binding.sendButton.setOnClickListener {
@@ -97,6 +130,7 @@ class ChatActivity : AppCompatActivity() {
                 }
             }
 
+
             override fun onChildChanged(
                 snapshot: DataSnapshot,
                 previousChildName: String?
@@ -122,6 +156,21 @@ class ChatActivity : AppCompatActivity() {
 
 
     }
+
+    private fun fetchMessagesFromBackEnd() {
+        // Assuming you fetch messages from the backend here and store them in a variable
+        val messagesFromBackend: List<ChatMessage> = listOf(
+            ChatMessage("Sender1", "Hello!", System.currentTimeMillis()),
+            ChatMessage("Sender2", "Hi there!", System.currentTimeMillis() - 1000),
+            // Add more messages here as needed
+        )
+
+        // Now you can use the fetched messages in your RecyclerView adapter
+        adapter.setMessages(messagesFromBackend)
+    }
+
+
 }
+
 
 

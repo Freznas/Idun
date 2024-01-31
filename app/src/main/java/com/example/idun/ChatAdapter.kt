@@ -15,8 +15,7 @@ class ChatAdapter(val context: ChatActivity) : RecyclerView.Adapter<ChatAdapter.
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val message = messages[position]
-        holder.bind(message)
+        holder.bind(messages[position])
 
     }
 
@@ -27,6 +26,11 @@ class ChatAdapter(val context: ChatActivity) : RecyclerView.Adapter<ChatAdapter.
     @SuppressLint("NotifyDataSetChanged")
     fun addMessage(message: ChatMessage) {
         messages.add(message)
+        notifyDataSetChanged()
+    }
+    fun setMessages(newMessages: List<ChatMessage>) {
+        messages.clear()
+        messages.addAll(newMessages)
         notifyDataSetChanged()
     }
 
@@ -51,4 +55,6 @@ class ChatAdapter(val context: ChatActivity) : RecyclerView.Adapter<ChatAdapter.
 
 
     }
+
+
 }
