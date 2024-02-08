@@ -4,7 +4,7 @@ import android.content.Context
 
 interface ChatDataManager{
     fun saveMessage (message: String)
-    fun getMessages(): List<String>
+    suspend fun getMessages(): List<ChatMessage>
     fun sendMessage(message:ChatMessage)
 
 

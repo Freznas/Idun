@@ -28,6 +28,7 @@ class ChatAdapter(val context: ChatActivity) : RecyclerView.Adapter<ChatAdapter.
         messages.add(message)
         notifyDataSetChanged()
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun setMessages(newMessages: List<ChatMessage>) {
         messages.clear()
         messages.addAll(newMessages)
@@ -45,16 +46,5 @@ class ChatAdapter(val context: ChatActivity) : RecyclerView.Adapter<ChatAdapter.
             senderTextView.text = message.sender
         }
     }
-
-
-    companion object {
-        val itemCount: Any
-            get() {
-                TODO()
-            }
-
-
-    }
-
 
 }

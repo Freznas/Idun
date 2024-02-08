@@ -9,4 +9,17 @@
     <string name="placeholder_text_for_listview">Placeholder title</string>
     <string name="placeholder_number_for_listview">0</string>
     <string name="click_to_delete_item">Click an item to delete from The inventory</string>
+    <string name="chat_btn_send">Send</string>
+    <string name="ET_ChatMessage">Type a message...</string>
+    <string name="item_to_add_shopping">Item to add</string>
+    <string name="amount_to_add_shopping">#</string>
+    <string name="add_item_shopping_button">Add Item</string>
+    <string name="remove_item_shopping_button">Remove item</string>
+    <string name="messenger_btn_main">Messenger</string>
+    <string name="inventory_btn_main">Inventory</string>
+    <string name="shopping_btn_main">Shopping List</string>
+    <string name="amount_to_add_inventory">#</string>
+    <string name="item_to_add_inventory">Item to add to cart</string>
+    <string name="inventory_title">Inventory</string>
+    <string name="add_to_inventory_btn">Add to inventory</string>
 </resources>
