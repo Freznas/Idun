@@ -22,4 +22,7 @@
     <string name="item_to_add_inventory">Item to add to cart</string>
     <string name="inventory_title">Inventory</string>
     <string name="add_to_inventory_btn">Add to inventory</string>
+    <string name="btn_addnote">Add Note</string>
+    <string name="btn_notepad_main">Notepad</string>
+    <string name="btn_removenote">Remove note</string>
 </resources>

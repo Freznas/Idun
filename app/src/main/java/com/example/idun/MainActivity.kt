@@ -35,5 +35,10 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, ChatActivity::class.java)
                 startActivity(intent)
             }
+
+        binding.btnNotes.setOnClickListener {
+            val intent = Intent(this, NotepadActivity::class.java)
+            startActivity(intent)
+        }
         }
     }

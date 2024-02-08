@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/notesTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="The Title"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/noteBreadTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lorem ipsum"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <ImageButton
+        android:id="@+id/btn_deleteIndividualNote"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="end"
+        android:scaleType="centerCrop"
+        android:background="@color/white"
+        android:src="@drawable/trash" />
+
+
+</LinearLayout>

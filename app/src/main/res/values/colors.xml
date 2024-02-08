@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#CACDD2</color>
+    <color name="white">#FFFFFF</color>
     <color name="green">#2AFF00</color>
 <color name="brown">#99655959</color>
         <color name="colorPrimary">#0F9D58</color>
@@ -10,7 +10,7 @@
     <color name="baby_blue">#9CCCF1</color>
     <color name="beige">#7B6E6E</color>
     <color name="grey">#6D6D6D</color>
-    <color name="dark_white">#DEDEDE</color>
+    <color name="light_gray">#DEDEDE</color>
 
 
 

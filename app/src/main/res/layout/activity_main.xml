@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/idun_s_apples_title_text"
-        android:textColor="@color/dark_white"
+        android:textColor="@color/light_gray"
         android:textSize="35sp"
         android:padding="@dimen/padding_10dp"
 
@@ -32,7 +32,7 @@
         android:gravity="center"
         android:padding="@dimen/padding_10dp"
         android:text="@string/Iduns_Introduction"
-        android:textColor="@color/dark_white"
+        android:textColor="@color/light_gray"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,5 +93,19 @@
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/btn_shopping"
         app:layout_constraintTop_toBottomOf="@+id/tv_Intro" />
+
+    <Button
+        android:id="@+id/btn_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="272dp"
+        android:background="@drawable/btn_main"
+        android:padding="@dimen/padding_10dp"
+        android:text="@string/btn_notepad_main"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/btn_shopping"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Intro" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
