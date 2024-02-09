@@ -17,7 +17,7 @@ class InventoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInventoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//declaring a type to variables from my different files and classes
+
         listView = findViewById(R.id.lv_Inventory)
 
         combinedListDataManager = CombinedListDataManager(this)

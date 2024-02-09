@@ -25,4 +25,7 @@
     <string name="btn_addnote">Add Note</string>
     <string name="btn_notepad_main">Notepad</string>
     <string name="btn_removenote">Remove note</string>
+    <string name="notepad_title">Notepad</string>
+    <string name="enter_information_notepad">Enter information</string>
+    <string name="enter_details_notepad">Enter details</string>
 </resources>

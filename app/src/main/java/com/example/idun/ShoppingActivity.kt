@@ -35,7 +35,7 @@ class ShoppingActivity : AppCompatActivity() {
         adapter.addAll(shoppingList)
 
 
-//        dataManager = DataManager(this)
+//        notepadDataManager = NotepadDataManager(this)
         val saveShoppingList = combinedListDataManager.getShoppingListWithAmounts().map {
             "${it.first}|${it.second}"
         }

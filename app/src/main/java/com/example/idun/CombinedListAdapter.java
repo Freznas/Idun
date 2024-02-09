@@ -73,10 +73,10 @@ public class CombinedListAdapter extends ArrayAdapter<String>
 //  void removeSelectedItem(String title, String amount) {
 //        String selectedItem = title + "|" + amount;
 //        deleteItemByTitle(title);
-//        Set<String> shoppingList = new HashSet<>(dataManager.getShoppingList());
+//        Set<String> shoppingList = new HashSet<>(notepadDataManager.getShoppingList());
 //        shoppingList.removeIf(item -> item.startsWith(title));
 //        shoppingList.remove(selectedItem);
-//        dataManager.saveShoppingList(shoppingList);
+//        notepadDataManager.saveShoppingList(shoppingList);
 //        notifyDataSetChanged();
 //    }
 

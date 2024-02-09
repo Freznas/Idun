@@ -11,13 +11,55 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="32dp"
-        android:text="Notes"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/notepad_title"
         android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_titlenote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_10dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints="title"
+        android:gravity="center|bottom"
+        android:hint="@string/enter_information_notepad"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_NotesList">
+
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/et_contentnote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_10dp"
+        android:autofillHints="content"
+        android:gravity="center|bottom"
+        android:hint="@string/enter_details_notepad"
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_title">
+
+    </EditText>
 
     <ListView
         android:id="@+id/lv_NotesList"
