@@ -26,6 +26,8 @@
     <string name="btn_notepad_main">Notepad</string>
     <string name="btn_removenote">Remove note</string>
     <string name="notepad_title">Notepad</string>
-    <string name="enter_information_notepad">Enter information</string>
-    <string name="enter_details_notepad">Enter details</string>
+    <string name="enter_note_title">Note Title</string>
+    <string name="enter_note_bread">Note details</string>
+    <string name="save_error_message">Add title to continue</string>
+
 </resources>
