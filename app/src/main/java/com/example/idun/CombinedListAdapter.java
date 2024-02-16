@@ -44,8 +44,8 @@ public class CombinedListAdapter extends ArrayAdapter<String>
         if (currentItem != null)
         {
             final String[] itemParts = currentItem.split("\\|");
-            TextView titleTextView = ListItemView.findViewById(R.id.tv_ItemInList);
-            TextView amountTextView = ListItemView.findViewById(R.id.tv_itemAmount);
+            TextView titleTextView = ListItemView.findViewById(R.id.tv_ItemInShoppingList);
+            TextView amountTextView = ListItemView.findViewById(R.id.tv_itemShoppingAmount);
 
             if (itemParts.length > 0)
             {

@@ -14,21 +14,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        binding.btnShopping.setOnClickListener {
+// declare and initialize buttons to start the intent to open the relevant activity.
+        binding.btnShoppingMain.setOnClickListener {
             val intent = Intent(this, ShoppingActivity::class.java)
             startActivity(intent)
         }
-        binding.btnInventory.setOnClickListener {
+        binding.btnInventoryMain.setOnClickListener {
             val intent = Intent(this, InventoryActivity::class.java)
             startActivity(intent)
         }
-            binding.btnChat.setOnClickListener {
+            binding.btnChatMain.setOnClickListener {
                 val intent = Intent(this, ChatActivity::class.java)
                 startActivity(intent)
             }
 
-        binding.btnNotes.setOnClickListener {
+        binding.btnNotesMain.setOnClickListener {
             val intent = Intent(this, NotepadActivity::class.java)
             startActivity(intent)
         }

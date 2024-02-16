@@ -7,7 +7,7 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/messageTextView"
+        android:id="@+id/tv_PlaceholderChatTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
@@ -19,7 +19,7 @@
         android:layout_marginBottom="4dp"/>
 
     <TextView
-        android:id="@+id/senderTextView"
+        android:id="@+id/tv_PlaceholderChatBread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="granny smith"

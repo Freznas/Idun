@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_Welcome_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -25,7 +25,7 @@
 
     <TextView
 
-        android:id="@+id/tv_Intro"
+        android:id="@+id/tv_MainIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="404dp"
@@ -39,22 +39,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tab_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_marginBottom="14dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tv_Welcome_Title"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
 
     <Button
-        android:id="@+id/btn_shopping"
+        android:id="@+id/btn_shoppingMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -64,10 +64,10 @@
         android:textColor="@color/white"
         android:padding="@dimen/padding_10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Intro" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_MainIntro" />
 
     <Button
-        android:id="@+id/btn_chat"
+        android:id="@+id/btn_chatMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="348dp"
@@ -76,13 +76,13 @@
         android:textColor="@color/white"
         android:padding="@dimen/padding_10dp"
 
-        app:layout_constraintEnd_toStartOf="@+id/btn_inventory"
+        app:layout_constraintEnd_toStartOf="@+id/btn_inventoryMain"
         app:layout_constraintHorizontal_bias="0.427"
-        app:layout_constraintStart_toEndOf="@+id/btn_shopping"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Intro" />
+        app:layout_constraintStart_toEndOf="@+id/btn_shoppingMain"
+        app:layout_constraintTop_toBottomOf="@+id/tv_MainIntro" />
 
     <Button
-        android:id="@+id/btn_inventory"
+        android:id="@+id/btn_inventoryMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
@@ -91,11 +91,11 @@
         android:padding="@dimen/padding_10dp"
         android:text="@string/inventory_btn_main"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/btn_shopping"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Intro" />
+        app:layout_constraintStart_toEndOf="@+id/btn_shoppingMain"
+        app:layout_constraintTop_toBottomOf="@+id/tv_MainIntro" />
 
     <Button
-        android:id="@+id/btn_notes"
+        android:id="@+id/btn_notesMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -104,8 +104,8 @@
         android:padding="@dimen/padding_10dp"
         android:text="@string/btn_notepad_main"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/btn_shopping"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Intro" />
+        app:layout_constraintStart_toEndOf="@+id/btn_shoppingMain"
+        app:layout_constraintTop_toBottomOf="@+id/tv_MainIntro" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

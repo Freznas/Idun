@@ -42,7 +42,7 @@ public class NotepadDataManager
         editor.apply();
     }
 
-    public boolean deleteNoteByTitle(String title)
+    public void deleteNoteByTitle(String title)
     //tar bort anteckningar genom att gå igenom alla sparade anteckningar och ta bort den med matchande titel som man valt att redigera.
 
     {
@@ -58,10 +58,9 @@ public class NotepadDataManager
             {
                 editor.remove(entry.getKey());
                 boolean isRemoved = editor.commit();
-                return isRemoved;
+                return;
             }
         }
-        return false;
     }
 
     public String getNoteByPosition(int position)

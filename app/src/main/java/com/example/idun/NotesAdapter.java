@@ -40,7 +40,7 @@ public class NotesAdapter extends ArrayAdapter<String>
         if (currentNote != null)
         {
             final String[] noteParts = currentNote.split("\\|");
-            TextView titleTextView = listItemView.findViewById(R.id.notesTitleTextView);
+            TextView titleTextView = listItemView.findViewById(R.id.tv_NotePlaceholdTitle);
             if (noteParts.length > 0)
             {
                 titleTextView.setText(noteParts[0]);
@@ -56,6 +56,7 @@ public class NotesAdapter extends ArrayAdapter<String>
                     Intent editIntent = new Intent(getContext(), NotepadActivity.class);
                     editIntent.putExtra("edit_note_position", position);
                     getContext().startActivity(editIntent);
+
                 }
             });
 

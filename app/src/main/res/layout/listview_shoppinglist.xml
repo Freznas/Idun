@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/tv_ItemInList"
+        android:id="@+id/tv_ItemInShoppingList"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="top|center"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_itemAmount"
+        android:id="@+id/tv_itemShoppingAmount"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:gravity="start|center"
@@ -31,7 +31,7 @@
         android:textColor="@color/black"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_ItemInList"
+        app:layout_constraintStart_toEndOf="@+id/tv_ItemInShoppingList"
         app:layout_constraintTop_toTopOf="parent" />
 
 

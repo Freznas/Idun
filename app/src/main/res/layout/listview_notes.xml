@@ -7,7 +7,7 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/notesTitleTextView"
+        android:id="@+id/tv_NotePlaceholdTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -19,21 +19,14 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/noteBreadTextView"
+        android:id="@+id/tv_NotePlaceholdBread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="lorem ipsum"
         android:textColor="@color/black"
         android:textSize="14sp" />
 
-    <ImageButton
-        android:id="@+id/btn_deleteIndividualNote"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_gravity="end"
-        android:scaleType="centerCrop"
-        android:background="@color/white"
-        android:src="@drawable/trash" />
+
 
 
 </LinearLayout>

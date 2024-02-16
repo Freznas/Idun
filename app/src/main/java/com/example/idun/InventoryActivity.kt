@@ -18,7 +18,7 @@ class InventoryActivity : AppCompatActivity() {
         binding = ActivityInventoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        listView = findViewById(R.id.lv_Inventory)
+        listView = findViewById(R.id.lv_InventoryList)
 
         combinedListDataManager = CombinedListDataManager(this)
         adapter = CombinedListAdapter(
@@ -37,8 +37,8 @@ class InventoryActivity : AppCompatActivity() {
         adapter.setItems(saveShoppingList)
 
         binding.btnEditInventory.setOnClickListener {
-            val title: String = binding.etInventoryItemToPlace.text.toString().trim()
-            val itemAmount: String = binding.etInventoryAmountToPlace.text.toString()
+            val title: String = binding.etItemPlaceInventory.text.toString().trim()
+            val itemAmount: String = binding.etAmountPlaceInventory.text.toString()
 
             if (title.isEmpty() || itemAmount.isEmpty()) {
                 Toast.makeText(this, "Enter item and amount", Toast.LENGTH_LONG).show()
@@ -52,8 +52,8 @@ class InventoryActivity : AppCompatActivity() {
                 newData.shuffle()
                 adapter.setItems(newData.map { "${it.first}|${it.second}" })
 
-                binding.etInventoryItemToPlace.text.clear()
-                binding.etInventoryAmountToPlace.text.clear()
+                binding.etItemPlaceInventory.text.clear()
+                binding.etAmountPlaceInventory.text.clear()
 
                 Toast.makeText(
                     this@InventoryActivity,

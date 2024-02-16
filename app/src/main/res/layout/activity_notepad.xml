@@ -7,11 +7,12 @@
     android:background="@color/white"
     tools:context=".NotepadActivity">
 
+
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_NotepadTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:text="@string/notepad_title"
         android:textColor="@color/black"
@@ -19,9 +20,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
-        android:id="@+id/et_titlenote"
+        android:id="@+id/et_TitleNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
@@ -39,7 +39,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/et_contentnote"
+        android:id="@+id/et_ContentNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -67,33 +67,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_NotepadTitle" />
 
     <Button
         android:id="@+id/btn_addNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="184dp"
         android:background="@drawable/btn_notes"
         android:padding="@dimen/padding_10dp"
         android:text="@string/btn_addnote"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_notesList" />
 
     <Button
         android:id="@+id/btn_deleteNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/btn_notes"
         android:padding="@dimen/padding_10dp"
         android:text="@string/btn_removenote"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_notesList" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

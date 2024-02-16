@@ -10,9 +10,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idun.databinding.ActivityChatBinding
-import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
-import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -38,7 +35,7 @@ class ChatActivity : AppCompatActivity() {
 
 // setting datamanager as firebaseDataManager.
         dataManager = FireBaseDataManager(this)
-        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.rv_ChatmessageList)
         adapter = ChatAdapter(this)
         //Call my function to fetch messages from the backend storage
         fetchMessagesFromBackEnd()
@@ -47,7 +44,7 @@ class ChatActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        messageEditText = findViewById(R.id.messageEditText) as EditText
+        messageEditText = findViewById(R.id.et_ChatMessage) as EditText
 
         // Set up Firebase database reference
         databaseReference = firebaseDatabase.getReference("chat")
@@ -74,7 +71,7 @@ class ChatActivity : AppCompatActivity() {
         // Function that takes messages and sends them to the FireBase database.
 
 
-        binding.sendButton.setOnClickListener {
+        binding.btnChatSend.setOnClickListener {
             val messageText = messageEditText.text.toString()
             if (messageText.isNotEmpty()) {
                 val currentUser = FirebaseAuth.getInstance().currentUser

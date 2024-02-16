@@ -9,7 +9,7 @@
     tools:context=".InventoryActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_deleteInstruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -19,12 +19,12 @@
         android:textSize="@dimen/delete_item_txt_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_inventoryItemToPlace">
+        app:layout_constraintTop_toBottomOf="@+id/et_ItemPlaceInventory">
 
     </TextView>
 
     <EditText
-        android:id="@+id/et_inventoryAmountToPlace"
+        android:id="@+id/et_AmountPlaceInventory"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="44dp"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/et_inventoryItemToPlace"
+        android:id="@+id/et_ItemPlaceInventory"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -54,7 +54,7 @@
     </EditText>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_InventoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_10dp"
@@ -72,7 +72,7 @@
     </TextView>
 
     <ListView
-        android:id="@+id/lv_Inventory"
+        android:id="@+id/lv_InventoryList"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:background="@color/brown"
@@ -80,7 +80,7 @@
 
         app:layout_constraintBottom_toTopOf="@+id/btn_editInventory"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tv_InventoryTitle"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button

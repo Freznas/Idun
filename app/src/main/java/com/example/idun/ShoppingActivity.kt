@@ -43,9 +43,9 @@ class ShoppingActivity : AppCompatActivity() {
 //        adapter.context
 
         // User defined method to shuffle the array list items
-        binding.btnAddToList.setOnClickListener {
-            val title: String = binding.etItemToPlace.text.toString().trim()
-            val itemAmount: String = binding.etAmountToPlace.text.toString()
+        binding.btnAddToListShopping.setOnClickListener {
+            val title: String = binding.etItemToPlaceShopping.text.toString().trim()
+            val itemAmount: String = binding.etAmountToPlaceShopping.text.toString()
 
             if (title.isEmpty() || itemAmount.isEmpty()) {
                 Toast.makeText(this, "Enter Item and amount", Toast.LENGTH_SHORT).show()
@@ -54,8 +54,8 @@ class ShoppingActivity : AppCompatActivity() {
                 val amount = itemAmount.toIntOrNull() ?: 0
 
 
-                binding.etItemToPlace.text.clear()
-                binding.etAmountToPlace.text.clear()
+                binding.etItemToPlaceShopping.text.clear()
+                binding.etAmountToPlaceShopping.text.clear()
                 combinedListDataManager.saveShoppingListItem(title, itemAmount)
 
 
@@ -95,11 +95,11 @@ class ShoppingActivity : AppCompatActivity() {
         }
 
 
-        binding.btnRemoveFromList.setOnClickListener {
+        binding.btnRemoveFromListShopping.setOnClickListener {
             adapter.clear()
             adapter.notifyDataSetChanged()
-            binding.etItemToPlace.setText("")
-            binding.etAmountToPlace.setText("")
+            binding.etItemToPlaceShopping.setText("")
+            binding.etAmountToPlaceShopping.setText("")
 
             Toast.makeText(this,
                 "Your Shopping list has been cleared.",

@@ -34,13 +34,13 @@
         android:layout_marginBottom="179dp"
         android:background="@color/white"
         android:padding="@dimen/padding_10dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_RemoveFromList"
+        app:layout_constraintBottom_toTopOf="@+id/btn_RemoveFromListShopping"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_ShoppingListTitle" />
 
     <EditText
-        android:id="@+id/et_ItemToPlace"
+        android:id="@+id/et_ItemToPlaceShopping"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
@@ -57,7 +57,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/et_amountToPlace"
+        android:id="@+id/et_amountToPlaceShopping"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="17dp"
@@ -73,28 +73,26 @@
 
 
     <Button
-        android:id="@+id/btn_AddToList"
+        android:id="@+id/btn_AddToListShopping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_shopping"
         android:padding="@dimen/padding_10dp"
-
         android:text="@string/add_item_shopping_button"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_RemoveFromList"
+        android:id="@+id/btn_RemoveFromListShopping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_shopping"
         android:padding="@dimen/padding_10dp"
-
         android:text="@string/remove_item_shopping_button"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
