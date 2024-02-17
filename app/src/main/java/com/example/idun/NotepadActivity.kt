@@ -32,7 +32,7 @@ class NotepadActivity : AppCompatActivity() {
 
         val savedTitle: String = notepadDataManager.savedTitle
         val savedContent: String = notepadDataManager.savedContent
-
+        listView.adapter = adapter
         titleEditText.setText(savedTitle)
         contentEditText.setText(savedContent)
 
@@ -88,6 +88,13 @@ class NotepadActivity : AppCompatActivity() {
 
             }
         }
+        fun onResume() {
+            super.onResume()
+            adapter.clear() // Ta bort befintliga anteckningar från adaptern
+            adapter.addAll(notepadDataManager.getNotes()) // Lägg till de senaste anteckningarna i adaptern
+            adapter.notifyDataSetChanged() // Meddela adaptern att datan har ändrats
+        }
+
     }
 
 

@@ -16,6 +16,7 @@ import java.util.List;
 
 public class NotesAdapter extends ArrayAdapter<String>
 {
+
     NotepadDataManager notepadDataManager;
 
 
@@ -41,21 +42,23 @@ public class NotesAdapter extends ArrayAdapter<String>
         {
             final String[] noteParts = currentNote.split("\\|");
             TextView titleTextView = listItemView.findViewById(R.id.tv_NotePlaceholdTitle);
-            if (noteParts.length > 0)
+            TextView contentTextView = listItemView.findViewById(R.id.tv_NotePlaceholdBread);
+            if (noteParts.length >= 2)
             {
                 titleTextView.setText(noteParts[0]);
+                contentTextView.setText(noteParts[1]);
             }
-            final String titleToDelete = noteParts[0];
+
 
             listItemView.setOnClickListener(new View.OnClickListener()
             {
-                @Override
                 public void onClick(View v)
                 {
 
                     Intent editIntent = new Intent(getContext(), NotepadActivity.class);
                     editIntent.putExtra("edit_note_position", position);
-                    getContext().startActivity(editIntent);
+                    getContext();
+
 
                 }
             });
@@ -65,6 +68,7 @@ public class NotesAdapter extends ArrayAdapter<String>
 
         return listItemView;
     }
+
 
     public void deleteNoteAtPosition(int position)
     //tar bort anteckning från både listan och sharedpreferences via positionen för att identifiera vilken som ska tas bort.
